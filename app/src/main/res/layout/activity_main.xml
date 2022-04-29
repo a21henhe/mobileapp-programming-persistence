@@ -29,14 +29,14 @@
 
         <Button
             android:id="@+id/read"
-            android:text="Read"
+            android:text="@string/read"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <Button
             android:id="@+id/write"
-            android:text="Write"
+            android:text="@string/write"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
@@ -44,18 +44,18 @@
     <EditText
         android:layout_marginTop="64dp"
         android:id="@+id/edit1"
-        android:hint="skriv"
+        android:hint="@string/id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:hint="skriv"
+        android:hint="@string/namn_p_berg"
         android:id="@+id/edit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:hint="skriv"
+        android:hint="@string/h_jd_p_berg"
         android:id="@+id/edit3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Persistence</string>
+    <string name="h_jd_p_berg">Höjd på berg</string>
+    <string name="namn_p_berg">Namn på berg</string>
+    <string name="id">Id</string>
+    <string name="write">Write</string>
+    <string name="read">Read</string>
 </resources>
