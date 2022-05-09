@@ -1,18 +1,15 @@
 package com.example.persistence;
 
-public class Mountain {
+public class Tree {
 
     private int id;
     private String name;
     private int height;
 
-    public Mountain(int id, String n, int h){
+    public Tree(int id, String n, int h){
         id = id;
         name = n;
         height = h;
-    }
-    public int getId() {
-        return id;
     }
 
     public String getName() {

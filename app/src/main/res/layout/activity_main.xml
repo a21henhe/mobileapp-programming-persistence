@@ -13,7 +13,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Database output"
+        android:text="@string/database_output"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,9 +21,9 @@
 
 
     <LinearLayout
-        android:layout_marginTop="64dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:gravity="center">
 
 
@@ -49,13 +49,13 @@
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:hint="@string/namn_p_berg"
+        android:hint="@string/tree_name"
         android:id="@+id/edit2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
     <EditText
-        android:hint="@string/h_jd_p_berg"
+        android:hint="@string/tree_height"
         android:id="@+id/edit3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>

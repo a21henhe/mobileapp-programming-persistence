@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,14 +25,14 @@ public class MainActivity extends AppCompatActivity {
 
     private SQLiteDatabase database;
     private DatabaseHelper databaseHelper;
-    private ArrayList<Mountain> listOfMountains;
+    private ArrayList<Tree> listOfTrees;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listOfMountains = new ArrayList<>();
+        listOfTrees = new ArrayList<>();
 
         textView = findViewById(R.id.textView);
         readButton = findViewById(R.id.read);
@@ -41,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                listOfMountains = getMountains();
-                populateTextView(listOfMountains);
+                listOfTrees = getTrees();
+                populateTextView(listOfTrees);
             }
         });
         writeButton = findViewById(R.id.write);
@@ -64,38 +63,37 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void populateTextView(ArrayList<Mountain> list){
+    private void populateTextView(ArrayList<Tree> list){
         textView.setText("");
-        for (Mountain mountain : list) {
-            textView.append(mountain.getName() + " has a height of: " + mountain.getHeight() + "\n");
+        for (Tree tree : list) {
+            textView.append(tree.getName() + " has a height of: " + tree.getHeight() + "\n");
         }
     }
 
     public void writeData() {
-        Log.d("", "test");
-        addMountain(Integer.parseInt(edit1.getText().toString()), edit2.getText().toString(), Integer.parseInt(edit3.getText().toString()));
+        addTree(Integer.parseInt(edit1.getText().toString()), edit2.getText().toString(), Integer.parseInt(edit3.getText().toString()));
     }
 
-    private long addMountain(int id,String name, int height) {
+    private long addTree(int id, String name, int height) {
         ContentValues values = new ContentValues();
-        values.put(DatabaseTables.Mountain.COLUMN_NAME_ID, id);
-        values.put(DatabaseTables.Mountain.COLUMN_NAME_NAME, name);
-        values.put(DatabaseTables.Mountain.COLUMN_NAME_HEIGHT, height);
-        return database.insert(DatabaseTables.Mountain.TABLE_NAME, null, values);
+        values.put(DatabaseTables.Tree.COLUMN_NAME_ID, id);
+        values.put(DatabaseTables.Tree.COLUMN_NAME_NAME, name);
+        values.put(DatabaseTables.Tree.COLUMN_NAME_HEIGHT, height);
+        return database.insert(DatabaseTables.Tree.TABLE_NAME, null, values);
     }
 
-    private ArrayList<Mountain> getMountains() {
-        Cursor cursor = database.query(DatabaseTables.Mountain.TABLE_NAME, null, null, null, null, null, null);
-        ArrayList<Mountain> mountains = new ArrayList<>();
+    private ArrayList<Tree> getTrees() {
+        Cursor cursor = database.query(DatabaseTables.Tree.TABLE_NAME, null, null, null, null, null, null);
+        ArrayList<Tree> trees = new ArrayList<>();
         while (cursor.moveToNext()) {
-            Mountain mountain = new Mountain(
-                    (int) cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseTables.Mountain.COLUMN_NAME_ID)),
-                    cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTables.Mountain.COLUMN_NAME_NAME)),
-                    cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseTables.Mountain.COLUMN_NAME_HEIGHT))
+            Tree tree = new Tree(
+                    (int) cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseTables.Tree.COLUMN_NAME_ID)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(DatabaseTables.Tree.COLUMN_NAME_NAME)),
+                    cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseTables.Tree.COLUMN_NAME_HEIGHT))
             );
-            mountains.add(mountain);
+            trees.add(tree);
         }
         cursor.close();
-        return mountains;
+        return trees;
     }
 }
